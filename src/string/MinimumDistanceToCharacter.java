@@ -41,13 +41,37 @@ public class MinimumDistanceToCharacter {
         return distances;
     }
 
+    public static List<Integer> solution2(String s, char t) {
+        List<Integer> answer = new ArrayList<>();
+        int p = 1000;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == t) {
+                p = 0;
+                answer.add(p);
+            } else {
+                answer.add(++p);
+            }
+        }
+        p = 1000;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == t) {
+                p = 0;
+            } else {
+                answer.set(i, Math.min(answer.get(i), ++p));
+            }
+        }
+
+        return answer;
+
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         String s = sc.next();
         char t = sc.next().charAt(0);
 
-        List<Integer> distances = solution(s, t);
+        List<Integer> distances = solution2(s, t);
 
         for (int i = 0; i < distances.size(); i++) {
             System.out.print(distances.get(i));
