@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class StringCompression {
 
-    private static String getSolution(String str) {
+    private static String solution(String str) {
         StringBuilder answer = new StringBuilder();
 
         char[] chars = str.toCharArray();
@@ -42,7 +42,7 @@ public class StringCompression {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
 
-        System.out.println(getSolution(str));
+        System.out.println(solution(str));
 
     }
 }
