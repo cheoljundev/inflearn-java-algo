@@ -1,30 +1,27 @@
 package array;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GreaterThanPrevChecker {
 
-    private static String solution(int n, int[] arr) {
-        String answer = "";
+    private static List<Integer> solution(int n, int[] arr) {
+        List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             Integer current = arr[i];
 
             if (i < 1) {
-                answer += String.valueOf(current);
-                answer += " ";
+                answer.add(current);
                 continue;
             }
 
             int prev = arr[i - 1];
 
             if (current > prev) {
-                answer += String.valueOf(current);
-                if (i < n - 1) {
-                    answer += " ";
-                }
+                answer.add(current);
             }
-
         }
 
         return answer;
@@ -41,6 +38,8 @@ public class GreaterThanPrevChecker {
             arr[i] = sc.nextInt();
         }
 
-        System.out.println(solution(n, arr));
+        for (int x : solution(n, arr)) {
+            System.out.print(x + " ");
+        }
     }
 }
