@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class GreaterThanPrevChecker {
 
-    private static String solution(int n, String str) {
+    private static String solution(int n, int[] arr) {
         String answer = "";
 
-        String[] arr = str.split(" ");
-
         for (int i = 0; i < n; i++) {
-            Integer current = Integer.valueOf(arr[i]);
+            Integer current = arr[i];
 
             if (i < 1) {
                 answer += String.valueOf(current);
@@ -18,7 +16,7 @@ public class GreaterThanPrevChecker {
                 continue;
             }
 
-            int prev = Integer.parseInt(arr[i - 1]);
+            int prev = arr[i - 1];
 
             if (current > prev) {
                 answer += String.valueOf(current);
@@ -36,8 +34,13 @@ public class GreaterThanPrevChecker {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         sc.nextLine();
-        String str = sc.nextLine();
 
-        System.out.println(solution(n, str));
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.println(solution(n, arr));
     }
 }
