@@ -6,29 +6,23 @@ import java.util.Scanner;
 
 public class ReversedPrimeNumber {
 
-    private static int[] solution(String[] arr) {
+    private static int[] solution(int[] arr) {
         List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < arr.length; i++) {
-            char[] chars = arr[i].toCharArray();
-            int lt = 0;
-            int rt = chars.length - 1;
 
-            while(lt < rt) {
-                char tmp = chars[lt];
-                chars[lt] = chars[rt];
-                chars[rt] = tmp;
-
-                lt++;
-                rt--;
+            int result = 0;
+            int n = arr[i];
+            while (n > 0) {
+                int digit = n % 10; //마지막 자리 추출
+                result = result * 10 + digit; //결과에 자리 추가
+                n /= 10;
             }
 
-            int n = Integer.parseInt(String.valueOf(chars));
-
-            boolean isPrime = isPrime(n);
+            boolean isPrime = isPrime(result);
 
             if (isPrime) {
-                answer.add(n);
+                answer.add(result);
             }
 
         }
@@ -36,19 +30,19 @@ public class ReversedPrimeNumber {
         return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 
-    private static boolean isPrime(int n) {
+    private static boolean isPrime(int result) {
         boolean isPrime = true;
 
-        int sqrt = (int) Math.sqrt(n);
+        int sqrt = (int) Math.sqrt(result);
 
-        if (n < 2) {
+        if (result < 2) {
             isPrime = false;
-        } else if (!(n == 2) && n % 2 == 0) {
+        } else if (!(result == 2) && result % 2 == 0) {
             isPrime = false;
         }
 
         for (int j = 3; j <= sqrt; j+=2) {
-            if (n % j == 0) {
+            if (result % j == 0) {
                 isPrime = false;
             }
         }
@@ -59,10 +53,10 @@ public class ReversedPrimeNumber {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        String[] arr = new String[n];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.next();
+            arr[i] = sc.nextInt();
         }
 
         for (int x : solution(arr)) {
