@@ -52,11 +52,27 @@ public class PrimeNumber {
         return count;
     }
 
+    private static int solution3(int n) {
+        int answer = 0;
+        int[] ch = new int[n+1];
+
+        for (int i = 2; i <= n; i++) {
+            if (ch[i] == 0) { // ch[i] 값이 0이 아니면 무시
+                answer++;
+                for (int j = i; j <= n; j+=i) { // i의 배수를 모두 1로 만들어준다.
+                    ch[j] = 1;
+                }
+            }
+
+        }
+        return answer;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        System.out.println(solution2(n));
+        System.out.println(solution3(n));
 
     }
 }
