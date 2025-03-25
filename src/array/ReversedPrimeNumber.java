@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ReversedPrimeNumber {
 
-    private static int[] solution(int[] arr) {
+    private static List<Integer> solution(int[] arr) {
         List<Integer> answer = new ArrayList<>();
 
         for (int i = 0; i < arr.length; i++) {
@@ -27,26 +27,16 @@ public class ReversedPrimeNumber {
 
         }
 
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        return answer;
     }
 
-    private static boolean isPrime(int result) {
-        boolean isPrime = true;
 
-        int sqrt = (int) Math.sqrt(result);
-
-        if (result < 2) {
-            isPrime = false;
-        } else if (!(result == 2) && result % 2 == 0) {
-            isPrime = false;
+    public static boolean isPrime(int num) {
+        if (num == 1) return false;
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) return false;
         }
-
-        for (int j = 3; j <= sqrt; j+=2) {
-            if (result % j == 0) {
-                isPrime = false;
-            }
-        }
-        return isPrime;
+        return true;
     }
 
     public static void main(String[] args) {
