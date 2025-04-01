@@ -1,4 +1,4 @@
-package array;
+package sec2;
 
 import java.util.*;
 

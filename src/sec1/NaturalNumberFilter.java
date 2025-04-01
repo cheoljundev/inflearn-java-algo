@@ -1,4 +1,4 @@
-package string;
+package sec1;
 
 import java.util.Scanner;
 
