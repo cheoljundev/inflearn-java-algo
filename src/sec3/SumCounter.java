@@ -23,6 +23,26 @@ public class SumCounter {
         return answer;
     }
 
+    private static int solution2(int n, int m, int[] arr) {
+        int answer = 0, sum = 0, lt  = 0;
+        for (int rt = 0; rt < n; rt++) {
+            sum += arr[rt];
+            if (sum == m) {
+                answer++;
+            }
+
+            while (sum >= m) {
+                sum -= arr[lt++];
+                if (sum == m) {
+                    answer++;
+                }
+            }
+
+        }
+
+        return answer;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -33,7 +53,7 @@ public class SumCounter {
             arr[i] = sc.nextInt();
         }
 
-        System.out.println(solution(n, m, arr));
+        System.out.println(solution2(n, m, arr));
 
     }
 }
